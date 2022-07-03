@@ -1,0 +1,17 @@
+header.header(data-scroll-sticky)
+	.container
+		.header__menu
+			img.logo(src="images/logo.png" alt="logo")
+			button.header__burger.btn.js-burger(type="button")
+				i.header__burger--bars
+			.header__list
+				img.hourglass(src="images/hourglass.png" alt="hourglass")
+				each object, key in data.header.menu
+					a.header__link.loco-anchor(
+						href=object.url
+						data-scroll-to
+						data-scroll-target=object.url
+						data-link=key
+						data-scroll-offset="-120"
+					)
+						span!= object.name

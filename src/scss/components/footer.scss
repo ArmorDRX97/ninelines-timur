@@ -1,0 +1,84 @@
+.counter {
+	position: fixed;
+	bottom: 90px;
+	right: 20px;
+	padding: 0;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: #282A33;
+
+	&:after {
+		border: none;
+		position: absolute;
+		top: 0.1rem;
+		left: 0.1rem;
+		text-align: center;
+		display: block;
+		border-radius: 50%;
+		width: 2.8rem;
+		height: 2.8rem;
+		background-color: white;
+		content: " ";
+	}
+
+	@include devices {
+		bottom: 20px;
+		right: 20px;
+	}
+
+	.left-half-clipper {
+		border-radius: 50%;
+		width: 48px;
+		height: 48px;
+		position: absolute;
+		clip: rect(0, 48px, 48px, 1.7em);
+	}
+
+	&.over50 .left-half-clipper {
+		clip: rect(auto, auto, auto, auto);
+	}
+
+	.value-bar {
+		position: absolute;
+		clip: rect(0, 1.7em, 48px, 0);
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		border: 2px solid #D2233C;
+		box-sizing: border-box;
+	}
+
+	&.over50 .first50-bar {
+		position: absolute;
+		clip: rect(0, 48px, 48px, 1.7em);
+		border: 2px solid #D2233C;
+		border-radius: 50%;
+		width: 48px;
+		height: 48px;
+	}
+
+	&:not(.over50) .first50-bar {
+		display: none;
+	}
+
+	span {
+		position: absolute;
+		width: 48px;
+		height: 48px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: #282A33;
+		z-index: 2;
+
+		svg {
+			width: 15px;
+		}
+
+		&.back-to-top {
+			cursor: pointer;
+		}
+	}
+}

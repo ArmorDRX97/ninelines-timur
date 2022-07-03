@@ -1,0 +1,19 @@
+extends pug/base
+
+prepend vars
+	- title = "<?= htmlspecialchars($title) ?>"
+	- description = "<?= htmlspecialchars($description) ?>"
+	- image = "<?= htmlspecialchars($image) ?>"
+
+append vars
+	//-
+
+block content
+	include pug/data
+		main.site.main.container(data-scroll-container)
+			.preloader
+				img.rocket(src="images/rocket.png" alt="rocket")
+			include pug/components/header
+			include pug/pages/home
+			include pug/components/footer
+			include pug/components/analytics

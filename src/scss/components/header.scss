@@ -1,0 +1,215 @@
+.header {
+	position: fixed;
+	right: 0;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 2100;
+	transition: 0.3s all ease;
+	border-bottom: 1px solid transparent;
+	background-color: #fff;
+
+	&__menu {
+		height: 150px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		transition: 0.3s all ease;
+		@include devices {
+			height: 78px;
+		}
+
+		.logo {
+			position: relative;
+			bottom: -70px;
+			width: 150px;
+			height: auto;
+			transition: 0.3s all ease;
+			@include devices {
+				bottom: -20px;
+				width: 80px;
+			}
+		}
+	}
+
+	&__link {
+		font-size: px(18);
+		font-weight: 700;
+		position: relative;
+		margin-left: 30px;
+		bottom: -30px;
+		transition: 0.3s all ease;
+
+		&:hover {
+			color: #EE5087;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			bottom: -30px;
+			left: -20px;
+			background-image: url('../images/line-menu.png');
+			z-index: 1;
+			width: 100px;
+			height: 150px;
+			opacity: 0;
+			transform: scale(0.8);
+			transition: 0.3s all ease;
+		}
+
+		span {
+			position: relative;
+			z-index: 3;
+		}
+
+		&.is-active {
+			&:before {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+	}
+
+	&__list {
+		.hourglass {
+			display: none;
+			position: absolute;
+			bottom: 0;
+			left: -15%;
+			height: auto;
+			width: 130%;
+			max-width: 200%;
+			@include devices {
+				display: block;
+			}
+		}
+
+		@include devices {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			transform: translateX(100%);
+			opacity: 0;
+			visibility: hidden;
+			height: 100vh;
+			background-color: #fff;
+			padding: 60px 40px;
+			overflow: hidden;
+			transition: 0.3s all ease;
+			.header__link {
+				font-size: px(26);
+				margin-left: 0;
+				margin-bottom: 40px;
+				display: block;
+
+				&:before {
+					content: none;
+				}
+			}
+		}
+	}
+
+	&.menu-open {
+
+		.header__burger--bars {
+			background-color: transparent;
+
+			&:before {
+				transform: rotate(45deg);
+			}
+
+			&:after {
+				transform: rotate(-45deg);
+			}
+		}
+
+		.header__list {
+			@include devices {
+				transform: translateX(0);
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+}
+
+
+.header__burger {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 17.8px;
+	padding-left: 0;
+	padding-right: 0;
+	border: none;
+	background-color: transparent;
+	color: inherit;
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
+	transition: .3s ease;
+	@include desktop {
+		display: none;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&--bars {
+		display: block;
+		position: relative;
+		width: 26px;
+		height: 2.2px;
+		background-color: #000;
+		transition: .3s;
+
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			transition: .3s;
+		}
+
+		&:before {
+			transform: translate(0, -7px);
+		}
+
+		&:after {
+			transform: translate(0, 7px);
+		}
+	}
+}
+
+
+.scrolled {
+	.header {
+		border-bottom: 1px solid #ddd;
+
+		&__menu {
+			height: 100px;
+			@include devices {
+				height: 78px;
+			}
+
+			.logo {
+				bottom: 0;
+				width: 80px;
+				@include devices {
+					width: 60px;
+				}
+			}
+		}
+
+		&__link {
+			bottom: 0;
+		}
+	}
+}

@@ -1,0 +1,88 @@
+$sprites: (
+	"job1": (
+		normal: (
+			x: 0,
+			y: 0,
+			width: 30,
+			height: 30,
+			image: "sprites.png",
+			total_width: 62,
+			total_height: 62,
+		),
+		retina: (
+			x: 0,
+			y: 0,
+			width: 60,
+			height: 60,
+			image: "sprites@2x.png",
+			total_width: 124,
+			total_height: 124,
+		),
+	),
+	"job2": (
+		normal: (
+			x: 32,
+			y: 0,
+			width: 30,
+			height: 30,
+			image: "sprites.png",
+			total_width: 62,
+			total_height: 62,
+		),
+		retina: (
+			x: 64,
+			y: 0,
+			width: 60,
+			height: 60,
+			image: "sprites@2x.png",
+			total_width: 124,
+			total_height: 124,
+		),
+	),
+	"job3": (
+		normal: (
+			x: 0,
+			y: 32,
+			width: 30,
+			height: 30,
+			image: "sprites.png",
+			total_width: 62,
+			total_height: 62,
+		),
+		retina: (
+			x: 0,
+			y: 64,
+			width: 60,
+			height: 60,
+			image: "sprites@2x.png",
+			total_width: 124,
+			total_height: 124,
+		),
+	),
+	"job4": (
+		normal: (
+			x: 32,
+			y: 32,
+			width: 30,
+			height: 30,
+			image: "sprites.png",
+			total_width: 62,
+			total_height: 62,
+		),
+		retina: (
+			x: 64,
+			y: 64,
+			width: 60,
+			height: 60,
+			image: "sprites@2x.png",
+			total_width: 124,
+			total_height: 124,
+		),
+	),
+);
+
+@each $name in map-keys($sprites) {
+	.sprite-#{$name} {
+		@include sprite($name);
+	}
+}

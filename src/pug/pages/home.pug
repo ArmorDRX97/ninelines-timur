@@ -1,0 +1,83 @@
+section.resume#resume(data-scroll-section)
+	.row
+		.col.xl-6
+			h1.resume__title
+				span.name Тимур,
+					br
+					span.job HTML-верстальщик
+			p.resume__desc
+				| Как разработчик, я высоко ценю способность воплотить видение дизайнера в жизнь, что считаю очень полезным для бизнеса. Я получаю огромное удовлетворение, наблюдая за работой от идеи до дизайна, особенно когда она появляется в руках пользователя. Я считаю, что ориентированные на пользователя решения являются наиболее ценными цифровыми ресурсами будущего.
+		.col.xl-3.offset-3
+			each contact in data.contacts
+				if(contact.blank)
+					a.contact(href=contact.url target="_blank")= contact.title
+				else
+					a.contact(href=contact.url)= contact.title
+			each share in data.share.list
+				a.resume__share(href="/test" data-social=share.id)
+					+svg(share.id)
+section.about#about(data-scroll-section)
+	img.line-about(src="images/line-about.png" alt="line")
+	img.line-about-mobile(src="images/line-about-mobile.png" alt="line")
+	.row
+		.col.xl-6
+			h2.global-title= data.workExperience.caption
+			each work in data.workExperience.list
+				.about__work--card
+					p.text-muted= work.date
+					p
+						b= work.title
+						span.educations
+							if work.education === "id"
+								i.rhombus.purple
+								i.rhombus.yellow
+								i.rhombus.blue
+							else
+								each ed in work.education
+									i(class="rhombus " + data.educationId[ed])
+					p.org-name
+						if work.organization !== null
+							i(class="sprite sprite-" + work.organization.img)
+							b= work.organization.name
+						span= work.location
+					p.desc= work.description
+					if work.tags !== null
+						each tag in work.tags
+							a= tag
+
+		.col.xl-3
+			.about__img.pc(data-scroll data-scroll-speed="-5")
+				img.about__img--man(src="images/man.png" alt="man")
+			.about__img.mob
+				img.about__img--man(src="images/man.png" alt="man")
+		.col.xl-3
+			h2.global-title.text-center.text-xl-left= data.education.caption
+			.about__education
+				each education in data.education.list
+					.about__education--card
+						if education.id === "id"
+							img(src="images/rhombus-colors.png" alt="rhombus")
+						else
+							i(class="rhombus big " + data.educationId[education.id])
+						p
+							b= education.title
+						each institution in education.institution
+							p= institution
+section.skills#skills(data-scroll-section)
+	img.line-skills(src="images/line-skills.png" alt="line")
+	img.line-skills-mobile(src="images/line-skills-mobile.png" alt="line")
+	h2.global-title= data.skills.caption
+	.row
+		each skillBlock in data.skills.list
+			.col.xl-3
+				.skills__card
+					p.mb-6
+						b= skillBlock.title
+					p
+						- var i = 1
+						- skillLength = (skillBlock.skillsList.length)
+						each skill in skillBlock.skillsList
+							= skill
+							if (i < skillLength)
+								= ", "
+							- i++
