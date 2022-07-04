@@ -28,10 +28,10 @@ function toggleMenu(event) {
 }
 
 function toggleClassMenu() {
-	$('.header__link').on('click', () => {
+	$('.header__link').click(function () {
 		$('.header__link').removeClass('is-active');
 		$(this).addClass('is-active');
-	});
+	})
 }
 
 function init() {
